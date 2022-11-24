@@ -73,6 +73,9 @@ const statementSchema = new mongoose.Schema({
     address: {
         type: 'string',
     },
+    avatar: {
+        type: 'string',
+    },
 }, { toJSON: {
     virtuals: true,
 }, id: false});

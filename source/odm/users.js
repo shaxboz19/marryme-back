@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import validator from 'validator';
 import bcrypt from 'bcrypt';
 import {getSalt} from '../utils';
@@ -50,9 +50,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         enum: [ 'admin', 'user' ],
     },
-    favorite: {
-        type: 'array',
-    },
+    favorite:  [{type: Schema.Types.ObjectId, ref: 'Statement'}],
     whiteList: {
         type: 'array',
     },
@@ -69,11 +67,27 @@ const userSchema = new mongoose.Schema({
     aboutMe: {
         type: 'string',
     },
-    inPublic: {
+    isPublic: {
         type: 'boolean',
+    },
+    avatar: {
+        type: 'string',
+    },
+    age: {
+        type: 'number',
+    },
+    address: {
+        type: 'string',
+    },
+    workplace: {
+        type: 'string',
+    },
+    description: {
+        type: 'string',
     },
 }, {
     timestamps: true,
+
 });
 
 // hash password

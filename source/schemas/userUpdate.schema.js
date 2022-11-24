@@ -28,7 +28,7 @@ export const userUpdate = {
         aboutMe: {
             type: 'string',
         },
-        inPublic: {
+        isPublic: {
             type: 'boolean',
         },
 
@@ -68,6 +68,21 @@ export const userUpdate = {
         },
         blackList: {
             type: 'array',
+        },
+        avatar: {
+            type: 'string',
+        },
+        age: {
+            type: 'number',
+        },
+        address: {
+            type: 'string',
+        },
+        workplace: {
+            type: 'string',
+        },
+        description: {
+            type: 'string',
         },
 
     },

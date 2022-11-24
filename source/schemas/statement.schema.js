@@ -59,6 +59,9 @@ export const statementCreate = {
         address: {
             type: 'string',
         },
+        avatar: {
+            type: 'string',
+        },
     },
     // eslint-disable-next-line max-len
     required: [ 'candidateType', 'age', 'nationality', 'maritalStatus', 'region' ],

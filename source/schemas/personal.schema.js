@@ -10,7 +10,7 @@ export const personalData = {
     aboutMe: {
         type: 'string',
     },
-    inPublic: {
+    isPublic: {
         type: 'boolean',
     },
     email: {

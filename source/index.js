@@ -27,6 +27,7 @@ app.use('/list/nationality', routers.nationality);
 app.use('/conversations', routers.conversation);
 app.use('/messages', routers.messages);
 app.use('/uploads', routers.uploads);
+app.use('/settings', routers.settings);
 
 
 app.listen(PORT, () => {

@@ -47,6 +47,16 @@ export class Users {
         }
     }
 
+    async updateAvatar (id, updateData) {
+        try {
+            const data = await this.models.users.updateAvatar(id, updateData);
+
+            return data;
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+
     async whiteList(data) {
         try {
             const list = await this.models.users.whiteList(data);
@@ -71,6 +81,16 @@ export class Users {
     async addFavorite(addData) {
         try {
             const data = await this.models.users.addFavorite(addData);
+
+            return data;
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+
+    async updateSettings(id, updateData) {
+        try {
+            const data = await this.models.users.updateSettings(id, updateData);
 
             return data;
         } catch (error) {
