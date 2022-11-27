@@ -97,4 +97,34 @@ export class Users {
             throw new Error(error);
         }
     }
+
+    async forgotPassword() {
+        try {
+            const data = await this.models.users.forgotPassword();
+
+            return data;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async  confirmCode() {
+        try {
+            const data = await this.models.users.confirmCode();
+
+            return data;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async updateByEmail(email, newData) {
+        try {
+            const data = await this.models.users.updateByEmail(email, newData);
+
+            return data;
+        } catch (error) {
+            throw error;
+        }
+    }
 }

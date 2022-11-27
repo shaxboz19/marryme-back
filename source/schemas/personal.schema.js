@@ -19,10 +19,10 @@ export const personalData = {
 
     },
 
-    password: {
-        type:      'string',
-        minLength: 8,
-    },
+    // password: {
+    //     type:      'string',
+    //     minLength: 8,
+    // },
 
 };
 

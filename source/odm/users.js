@@ -105,6 +105,20 @@ userSchema.pre('save', async function(next) {
         return next(error);
     }
 });
+userSchema.pre('update', async function(next) {
+    if (!this._update.password) {
+        return next();
+    }
+    try {
+        const salt = await bcrypt.genSalt(SALT);
+        const hash = await bcrypt.hash(this._update.password, salt);
+        this._update.password = hash;
+
+        return next();
+    } catch (error) {
+        return next(error);
+    }
+});
 
 // virtual field
 userSchema.virtual('fullName').get(function() {

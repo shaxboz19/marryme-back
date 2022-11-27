@@ -23,3 +23,6 @@ export {
 }
     from './favorite.schema.js';
 
+export {
+    newPassword as newPasswordSchema,
+} from './newPassword';

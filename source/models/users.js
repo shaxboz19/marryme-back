@@ -1,6 +1,11 @@
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
-import {users} from '../odm';
+import {users, codes} from '../odm';
+import random from 'random-number';
+import { sendMailWrapper } from '../utils/helpers';
+import { ValidationError } from '../utils/errors';
+import { WRONG_CODE } from '../utils/constants/error.constants';
+
 
 export class UsersModel {
     constructor(data) {
@@ -125,6 +130,52 @@ export class UsersModel {
             return data;
         } catch (error) {
             throw new Error(error);
+        }
+    }
+
+    async updateByEmail(email, newData) {
+        try {
+            const user = await  users.findOne({email});
+            const data = user.update(newData);
+
+            return data;
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+
+    async forgotPassword() {
+        try  {
+            let resetCode = random({min: 100000, max: 999999, integer: true});
+            let token = await codes.findOne({ email: this.data.to });
+            if (token) {
+                await token.deleteOne();
+            }
+            const data = await  sendMailWrapper(this.data, resetCode);
+            await codes.create({
+                email:     this.data.to,
+                code:      resetCode,
+                createdAt: Date.now(),
+
+            });
+
+            return data;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async confirmCode() {
+        try {
+            const {email, code} = this.data;
+            const data = await codes.findOne({email});
+            if (data.code !== code) {
+                throw  new ValidationError(WRONG_CODE, 400);
+            }
+
+            return {email};
+        } catch (error) {
+            throw error;
         }
     }
 }

@@ -6,3 +6,4 @@ export {cType} from './cType';
 export {nationality} from './nationality';
 export {conversation} from './Conversation';
 export {message} from './Message';
+export { codes } from './codes';
